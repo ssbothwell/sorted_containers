@@ -1,7 +1,6 @@
 """
 sortedlist stub file
 """
-from abc import ABCMeta, abstractmethod
 from typing import Sequence, MutableSequence
 from typing import List, Any, Iterable, Callable, Union, Tuple, Optional, TypeVar
 
@@ -83,9 +82,8 @@ class SortedListWithKey(SortedList):
     def discard(self, val: T) -> None: ...
     def remove(self, val: T) -> None: ...
     def _delete(self, pos: int, idx: int) -> None: ...
-    def _check_order(self, idx: int,
-                     key: Any,
-                     val: T) -> None: ...
+    # _check_order violates Liskov and cant be type checked
+    def _check_order(self, idx, key, val): ...
     def __setitem__(self, index: Any,
                     value: T) -> None: ...
     def irange(self, minimum: Optional[T]=None,
